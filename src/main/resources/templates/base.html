@@ -17,6 +17,111 @@
 
 <link rel="stylesheet" href="/css/style.css">
 </head>
+<style>
+	/* Footer Styles */
+   .footer-section {
+       background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+       color: white;
+       position: relative;
+       overflow: hidden;
+   }
+
+   .footer-section::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+       opacity: 0.05;
+       z-index: 0;
+   }
+
+   .footer-about, .footer-section h5, .footer-section ul, .payment-methods {
+       position: relative;
+       z-index: 1;
+   }
+
+   .footer-section h5 {
+       font-weight: 600;
+       margin-bottom: 1.5rem;
+       position: relative;
+       padding-bottom: 10px;
+   }
+
+   .footer-section h5::after {
+       content: '';
+       position: absolute;
+       left: 0;
+       bottom: 0;
+       width: 50px;
+       height: 2px;
+       background-color: #2563eb;
+   }
+
+   .footer-section ul li {
+       margin-bottom: 0.75rem;
+       transition: all 0.3s ease;
+   }
+
+   .footer-section ul li:hover {
+       transform: translateX(5px);
+   }
+
+   .hover-text-primary:hover {
+       color: #2563eb !important;
+   }
+
+   .icon-circle {
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+       transition: all 0.3s ease;
+   }
+
+   .icon-circle:hover {
+       transform: translateY(-3px);
+       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+   }
+
+   .text-muted {
+       opacity: 0.8;
+       transition: all 0.3s ease;
+   }
+
+   .payment-methods i {
+       font-size: 1.5rem;
+       transition: all 0.3s ease;
+   }
+
+   .payment-methods i:hover {
+       color: #2563eb !important;
+       transform: translateY(-3px);
+   }
+
+   @media (max-width: 768px) {
+       .footer-section {
+           text-align: center;
+       }
+
+       .footer-section h5::after {
+           left: 50%;
+           transform: translateX(-50%);
+       }
+
+       .social-icons {
+           justify-content: center;
+       }
+
+       .footer-section ul li {
+           justify-content: center !important;
+       }
+   }
+</style>
 <body>
 	<!-- Start Navbar  -->
 	<nav class="navbar navbar-expand-lg  bg-primary fixed-top navbar-dark">
@@ -114,12 +219,99 @@
 
 	<div th:replace="${content}"></div>
 
-	<!-- Start Footer -->
-	<div class="container-fluid p-1 bg-primary text-center text-white"
-		style="margin-top: 250px">
-		<p>ecom.com</p>
-	</div>
-	<!-- End Footer  -->
+	<!-- Start Premium Footer -->
+	<footer class="footer-section bg-dark pt-5 pb-4">
+		<div class="container">
+			<div class="row g-5">
+				<!-- Company Info -->
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-about">
+						<a href="#" class="d-flex align-items-center mb-4 text-decoration-none">
+							<i class="fas fa-shopping-bag fa-2x text-primary me-2"></i>
+							<span class="h3 text-white mb-0">Ecom Store</span>
+						</a>
+						<p class="text-light mb-4" style="font-size: 1.1rem; opacity: 0.9;">Your premier online shopping destination in Rwanda. We deliver quality products with exceptional service.</p>
+
+						<div class="social-icons">
+							<a href="#" class="icon-circle bg-primary text-white me-2"><i class="fab fa-facebook-f"></i></a>
+							<a href="#" class="icon-circle bg-primary text-white me-2"><i class="fab fa-twitter"></i></a>
+							<a href="#" class="icon-circle bg-primary text-white me-2"><i class="fab fa-instagram"></i></a>
+							<a href="#" class="icon-circle bg-primary text-white"><i class="fab fa-linkedin-in"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Quick Links -->
+				<div class="col-lg-2 col-md-6">
+					<h5 class="text-white mb-4" style="font-size: 1.25rem;">Quick Links</h5>
+					<ul class="list-unstyled">
+						<li class="mb-2"><a href="/" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Home</a></li>
+						<li class="mb-2"><a href="/products" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Products</a></li>
+						<li class="mb-2"><a href="/about" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">About Us</a></li>
+						<li class="mb-2"><a href="/contact" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Contact</a></li>
+						<li class="mb-2"><a href="/blog" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Blog</a></li>
+						<li><a href="/faq" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">FAQs</a></li>
+					</ul>
+				</div>
+
+				<!-- Categories -->
+				<div class="col-lg-2 col-md-6">
+					<h5 class="text-white mb-4" style="font-size: 1.25rem;">Categories</h5>
+					<ul class="list-unstyled">
+						<li class="mb-2"><a href="/products?category=Electronics" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Electronics</a></li>
+						<li class="mb-2"><a href="/products?category=Fashion" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Fashion</a></li>
+						<li class="mb-2"><a href="/products?category=Home" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Home & Garden</a></li>
+						<li class="mb-2"><a href="/products?category=Beauty" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Beauty</a></li>
+						<li><a href="/products?category=Sports" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Sports & Outdoors</a></li>
+					</ul>
+				</div>
+
+				<!-- Contact Info -->
+				<div class="col-lg-4 col-md-6">
+					<h5 class="text-white mb-4" style="font-size: 1.25rem;">Contact Us</h5>
+					<ul class="list-unstyled text-light" style="opacity: 0.9;">
+						<li class="mb-3 d-flex align-items-start">
+							<i class="fas fa-map-marker-alt text-primary mt-1 me-3" style="font-size: 1.1rem;"></i>
+							<span style="font-size: 1.05rem;">AUCA Gishushu, Kigali, Rwanda</span>
+						</li>
+						<li class="mb-3 d-flex align-items-start">
+							<i class="fas fa-phone-alt text-primary mt-1 me-3" style="font-size: 1.1rem;"></i>
+							<span style="font-size: 1.05rem;"><a href="tel:+250792397681" class="text-light text-decoration-none hover-text-primary">+250 792 397 681</a></span>
+						</li>
+						<li class="mb-3 d-flex align-items-start">
+							<i class="fas fa-envelope text-primary mt-1 me-3" style="font-size: 1.1rem;"></i>
+							<span style="font-size: 1.05rem;"><a href="mailto:muhirehillary720@gmail.com" class="text-light text-decoration-none hover-text-primary">muhirehillary720@gmail.com</a></span>
+						</li>
+						<li class="d-flex align-items-start">
+							<i class="fas fa-clock text-primary mt-1 me-3" style="font-size: 1.1rem;"></i>
+							<span style="font-size: 1.05rem;">Mon-Fri: 8AM - 6PM<br>Sat-Sun: 9AM - 4PM</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<hr class="my-4 bg-secondary" style="opacity: 0.2;">
+
+			<!-- Payment Methods and Copyright -->
+			<div class="row align-items-center">
+				<div class="col-md-6 mb-3 mb-md-0">
+					<div class="payment-methods">
+						<span class="text-light me-2" style="font-size: 1.05rem; opacity: 0.9;">We accept:</span>
+						<i class="fab fa-cc-visa text-light me-2" style="font-size: 1.5rem; opacity: 0.9;"></i>
+						<i class="fab fa-cc-mastercard text-light me-2" style="font-size: 1.5rem; opacity: 0.9;"></i>
+						<i class="fab fa-cc-paypal text-light me-2" style="font-size: 1.5rem; opacity: 0.9;"></i>
+						<i class="fab fa-cc-mtn text-light me-2" style="font-size: 1.5rem; opacity: 0.9;"></i>
+						<i class="fab fa-cc-airtel text-light" style="font-size: 1.5rem; opacity: 0.9;"></i>
+					</div>
+				</div>
+				<div class="col-md-6 text-md-end">
+					<p class="text-light mb-0" style="font-size: 1.05rem; opacity: 0.9;">&copy; 2023 Ecom Store. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End Premium Footer -->
+
 
 	<!-- Jquery Validation Library  -->
 	<script
