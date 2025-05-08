@@ -83,15 +83,20 @@ public class UserController {
 	}
 
 	@GetMapping("/cart")
-	public String loadCartPage(Principal p, Model m) {
+	public String loadCartPage(Principal p, Model m, HttpSession session) {
+		if (p == null) {
+			session.setAttribute("errorMsg", "Please log in to view your cart.");
+			return "redirect:/login"; // or homepage
+		}
 
-		UserDtls user = getLoggedInUserDetails(p);
+		UserDtls user = userService.getUserByEmail(p.getName());
 		List<Cart> carts = cartService.getCartsByUser(user.getId());
 		m.addAttribute("carts", carts);
-		if (carts.size() > 0) {
-			Double totalOrderPrice = carts.get(carts.size() - 1).getTotalOrderPrice();
-			m.addAttribute("totalOrderPrice", totalOrderPrice);
+
+		if (!carts.isEmpty()) {
+			m.addAttribute("totalOrderPrice", carts.get(carts.size() - 1).getTotalOrderPrice());
 		}
+
 		return "/user/cart";
 	}
 
