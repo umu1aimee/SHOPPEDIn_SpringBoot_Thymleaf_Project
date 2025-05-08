@@ -97,7 +97,7 @@ public class UserController {
 			m.addAttribute("totalOrderPrice", carts.get(carts.size() - 1).getTotalOrderPrice());
 		}
 
-		return "/user/cart";
+		return "user/cart";
 	}
 
 	@GetMapping("/cartQuantityUpdate")
