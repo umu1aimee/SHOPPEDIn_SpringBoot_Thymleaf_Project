@@ -123,7 +123,7 @@ public class UserController {
 			m.addAttribute("orderPrice", orderPrice);
 			m.addAttribute("totalOrderPrice", totalOrderPrice);
 		}
-		return "/user/order";
+		return "user/order";
 	}
 
 	@PostMapping("/save-order")
@@ -132,7 +132,7 @@ public class UserController {
 		UserDtls user = getLoggedInUserDetails(p);
 		orderService.saveOrder(user.getId(), request);
 
-		return "redirect:/user/success";
+		return "redirect:user/success";
 	}
 
 	@GetMapping("/success")
@@ -145,7 +145,7 @@ public class UserController {
 		UserDtls loginUser = getLoggedInUserDetails(p);
 		List<ProductOrder> orders = orderService.getOrdersByUser(loginUser.getId());
 		m.addAttribute("orders", orders);
-		return "/user/my_orders";
+		return "user/my_orders";
 	}
 
 	@GetMapping("/update-status")
@@ -173,7 +173,7 @@ public class UserController {
 		} else {
 			session.setAttribute("errorMsg", "status not updated");
 		}
-		return "redirect:/user/user-orders";
+		return "redirect:user/user-orders";
 	}
 
 	@GetMapping("/profile")
@@ -189,7 +189,7 @@ public class UserController {
 		} else {
 			session.setAttribute("succMsg", "Profile Updated");
 		}
-		return "redirect:/user/profile";
+		return "redirect:user/profile";
 	}
 
 	@PostMapping("/change-password")
@@ -212,7 +212,7 @@ public class UserController {
 			session.setAttribute("errorMsg", "Current Password incorrect");
 		}
 
-		return "redirect:/user/profile";
+		return "redirect:user/profile";
 	}
 
 }
