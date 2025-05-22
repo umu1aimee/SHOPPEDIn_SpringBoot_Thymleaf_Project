@@ -1,63 +1,183 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Login - SHOPPEDIn</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('/img/slide11.jpg') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+            backdrop-filter: blur(5px); /* Blurry effect */
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            background: transparent;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .card-header p {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4b0082;
+            box-shadow: 0 0 5px rgba(75, 0, 130, 0.5);
+            outline: none;
+        }
+
+        .btn-primary {
+            background: #4b0082;
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #8a2be2;
+            transform: scale(1.05);
+        }
+
+        .card-footer {
+            background: transparent;
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .card-footer a {
+            color: #4b0082;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .card-footer a:hover {
+            color: #8a2be2;
+        }
+
+        .alert {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .card {
+                margin: 1rem;
+            }
+            .card-header p {
+                font-size: 1.5rem;
+            }
+        }
+	</style>
 </head>
 <body>
-	<section>
-
-		<div class="container mt-5 p-5">
-			<div class="row">
-				<div class="col-md-6 p-5">
-					<img alt="" src="img/ecom.png" width="100%" height="400px">
-				</div>
-				<div class="col-md-6 mt-3 p-5">
-					<div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
-						<div class="card-header">
-							<p class="fs-4 text-center">Login</p>
-							<div th:if="${param.error}"
-								class="alert alert-danger text-center">
-
-								<th:block
-									th:if="${session.SPRING_SECURITY_LAST_EXCEPTION!=null}">
-									[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
-								</th:block>
-
-
-
+<section>
+	<div class="container mt-5 p-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6 mt-3">
+				<div class="card shadow p-3 mb-5 rounded">
+					<div class="card-header text-center">
+						<p class="fs-4 text-center">Login</p>
+						<div th:if="${param.error}" class="alert alert-danger text-center">
+							<th:block th:if="${session.SPRING_SECURITY_LAST_EXCEPTION!=null}">
+								[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+							</th:block>
+						</div>
+						<div th:if="${param.logout}" class="alert alert-success">
+							Logout Successfully
+						</div>
+					</div>
+					<div class="card-body">
+						<form action="/login" method="post">
+							<div class="mb-3">
+								<label class="form-label">Email</label>
+								<input required class="form-control" name="username" type="email">
 							</div>
-
-							<div th:if="${param.logout}" class="alert alert-success">
-								Logout Sucessfully</div>
-						</div>
-						<div class="card-body">
-							<form action="/login" method="post">
-								<div class="mb-3">
-									<label class="form-label">Email</label> <input required
-										class="form-control" name="username" type="email">
-								</div>
-
-								<div class="mb-3">
-									<label class="form-label">Password</label> <input required
-										class="form-control" name="password" type="password">
-								</div>
-								<button type="submit"
-									class="btn bg-primary text-white col-md-12">Login</button>
-							</form>
-						</div>
-
-						<div class="card-footer text-center">
-							<a href="/forgot-password" class="text-decoration-none">Forgot Password</a><br>
-							Don't have an account ? <a href="#" class="text-decoration-none">Create
-								one </a>
-						</div>
+							<div class="mb-3">
+								<label class="form-label">Password</label>
+								<input required class="form-control" name="password" type="password">
+							</div>
+							<button type="submit" class="btn bg-primary text-white col-md-12">Login</button>
+						</form>
+					</div>
+					<div class="card-footer text-center">
+						<a href="/forgot-password" class="text-decoration-none">Forgot Password</a><br>
+						Don't have an account? <a href="/register" class="text-decoration-none">Create one</a>
 					</div>
 				</div>
 			</div>
 		</div>
-
-	</section>
+	</div>
+</section>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

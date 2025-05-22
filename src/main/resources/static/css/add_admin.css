@@ -1,0 +1,80 @@
+body {
+        background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        max-width: 600px;
+        width: 100%;
+    }
+    .card-header {
+        background: #007bff;
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 1rem;
+    }
+    .fs-4 {
+        margin: 0;
+        font-weight: bold;
+    }
+    .form-label {
+        font-weight: 500;
+        color: #004d99;
+    }
+    .form-control {
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        padding: 0.75rem;
+        transition: border-color 0.3s;
+    }
+    .form-control:focus {
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        outline: none;
+    }
+    .row {
+        margin-bottom: 1rem;
+    }
+    .btn {
+        background: #007bff;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem;
+        font-weight: bold;
+        color: white;
+        transition: background 0.3s;
+    }
+    .btn:hover {
+        background: #0056b3;
+    }
+    .text-success {
+        color: #28a745;
+    }
+    .text-danger {
+        color: #dc3545;
+    }
+    input[type="file"] {
+        border: none;
+        background: transparent;
+    }
+    input[type="file"]::file-selector-button {
+        background: #007bff;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    input[type="file"]::file-selector-button:hover {
+        background: #0056b3;
+    }

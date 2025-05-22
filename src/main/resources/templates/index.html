@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	  th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://-defaulthost/thymeleaf" th:replace="~{base::layout(~{::section})}">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Welcome to shoppedin store</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
 </head>
@@ -11,115 +10,234 @@
 <style>
 	/* Enhanced Carousel Styles */
     #ecomHeroCarousel {
-      margin: 2rem 0;
-      position: relative;
+        margin: 2rem 0;
+        position: relative;
     }
 
     .carousel-inner {
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
 
     .carousel-item {
-      position: relative;
-      transition: transform 1s ease-in-out;
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
+        position: relative;
+        transition: transform 1s ease-in-out;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
     }
 
     .hero-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
-      z-index: 1;
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(128, 0, 128, 0.7), rgba(255, 165, 0, 0.5));
+        z-index: 1;
     }
 
     .carousel-caption {
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      padding: 1rem;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 1rem;
     }
 
     .hero-content {
-      padding: 3rem;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(5px);
-      border-radius: 1rem;
-      color: #fff;
-      text-align: center;
+        padding: 3rem;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+        border-radius: 1rem;
+        color: #fff;
+        text-align: center;
     }
 
     .carousel-indicators button {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      margin: 0 8px;
-      background-color: rgba(255,255,255,0.5);
-      border: 2px solid transparent;
-      transition: all 0.3s ease;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin: 0 8px;
+        background-color: rgba(255, 165, 0, 0.5);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
     }
 
     .carousel-indicators .active {
-      background-color: white;
-      transform: scale(1.3);
-      border-color: white;
+        background-color: #FFA500;
+        transform: scale(1.3);
+        border-color: #800080;
     }
 
     .carousel-control-prev, .carousel-control-next {
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 50px;
-      background-color: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(128, 0, 128, 0.5);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     #ecomHeroCarousel:hover .carousel-control-prev,
     #ecomHeroCarousel:hover .carousel-control-next {
-      opacity: 1;
+        opacity: 1;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      border: none;
+        background: linear-gradient(135deg, #800080, #4B0082);
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #4B0082, #800080);
     }
 
     .btn-warning {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #fff;
-      border: none;
+        background: linear-gradient(135deg, #FFA500, #FF8C00);
+        color: #fff;
+        border: none;
+    }
+
+    .btn-warning:hover {
+        background: linear-gradient(135deg, #FF8C00, #FFA500);
+    }
+
+    .btn-outline-light {
+        border-color: #E6E6FA;
+        color: #E6E6FA;
+    }
+
+    .btn-outline-light:hover {
+        background-color: #FFA500;
+        color: #1C0033;
+        border-color: #FFA500;
     }
 
     /* Smooth scroll */
     html {
-      scroll-behavior: smooth;
+        scroll-behavior: smooth;
+    }
+
+    /* Category Section */
+    #categories p {
+        color: #800080;
+        font-weight: bold;
+    }
+
+    .card {
+        background: rgba(128, 0, 128, 0.1);
+        border: 1px solid #800080;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card img {
+        filter: brightness(1.1);
+    }
+
+    .card a {
+        color: #4B0082;
+        font-weight: 500;
+    }
+
+    .card a:hover {
+        color: #FFA500;
+    }
+
+    /* Ensure equal circle sizes for category cards */
+    .card.rounded-circle {
+        width: 200px; /* Fixed width for equal circles */
+        height: 200px; /* Fixed height for equal circles */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .card.rounded-circle img {
+        width: 45%; /* Maintain proportional image size */
+        height: auto; /* Ensure image scales correctly */
+        object-fit: contain; /* Prevent image distortion */
+    }
+
+    .card.rounded-circle .card-body {
+        padding: 1rem; /* Consistent padding */
+        text-align: center;
+    }
+
+    /* About Us Section */
+    #trending {
+        background: linear-gradient(135deg, #FFF5E6 0%, #E6E6FA 100%);
+    }
+
+    #trending p.fs-4 {
+        color: #800080;
+    }
+
+    .about-paragraph {
+        color: #4B0082;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .about-fieldset {
+        max-width: 800px;
+        margin: 0 auto;
+        border: 2px solid #800080;
+        border-radius: 8px;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    .about-fieldset legend {
+        color: #800080;
+        font-weight: bold;
+        padding: 0 10px;
     }
 
     @media (max-width: 768px) {
-      .hero-content {
-        padding: 1.5rem;
-      }
+        .hero-content {
+            padding: 1.5rem;
+        }
 
-      .carousel-caption h2 {
-        font-size: 2rem;
-      }
+        .carousel-caption h2 {
+            font-size: 2rem;
+        }
 
-      .btn {
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
-      }
+        .btn {
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+        }
 
-      .carousel-control-prev, .carousel-control-next {
-        opacity: 1;
-        width: 40px;
-        height: 40px;
-      }
+        .carousel-control-prev, .carousel-control-next {
+            opacity: 1;
+            width: 40px;
+            height: 40px;
+        }
+
+        .about-paragraph {
+            font-size: 1rem;
+        }
+
+        .about-fieldset {
+            max-width: 100%;
+            padding: 1rem;
+        }
+
+        /* Adjust category card size for smaller screens */
+        .card.rounded-circle {
+            width: 150px; /* Smaller size for mobile */
+            height: 150px;
+        }
+
+        .card.rounded-circle img {
+            width: 50%; /* Adjust image size for smaller circles */
+        }
     }
 </style>
 
@@ -138,15 +256,14 @@
 			<!-- Slide 1 -->
 			<div class="carousel-item active">
 				<div class="hero-image-overlay"></div>
-				<img src="img/ecom1.jpeg" class="d-block w-100" alt="Slide 1" style="height: 600px; object-fit: cover;">
+				<img src="img/slide11.jpg" class="d-block w-100" alt="Slide 1" style="height: 600px; object-fit: cover;">
 				<div class="carousel-caption">
 					<div class="hero-content animate__animated animate__fadeInDown">
-						<span class="badge bg-primary mb-3">New Season</span>
-						<h2 class="display-4 fw-bold">Summer Collection 2023</h2>
-						<p class="lead">Discover our fresh new arrivals designed for your perfect summer</p>
+						<h2 class="display-4 fw-bold">Welcome To SHOPPEDIn Store</h2>
+						<p class="lead">Bringing the Store to Your Door!</p>
 						<div class="mt-4 d-flex justify-content-center gap-3">
 							<a href="/products" class="btn btn-primary">Shop Collection</a>
-							<a href="#trending" class="btn btn-outline-light">View Trends</a>
+							<a href="#trending" class="btn btn-outline-light">About Us</a>
 						</div>
 					</div>
 				</div>
@@ -155,12 +272,12 @@
 			<!-- Slide 2 -->
 			<div class="carousel-item">
 				<div class="hero-image-overlay"></div>
-				<img src="img/ecom3.jpg" class="d-block w-100" alt="Slide 2" style="height: 600px; object-fit: cover;">
+				<img src="img/slide11.jpg" class="d-block w-100" alt="Slide 2" style="height: 600px; object-fit: cover;">
 				<div class="carousel-caption">
 					<div class="hero-content animate__animated animate__fadeInDown">
-						<span class="badge bg-danger mb-3">Flash Sale</span>
+						<span class="badge bg-danger mb-3"></span>
 						<h2 class="display-4 fw-bold">Up to 50% OFF</h2>
-						<p class="lead">Our biggest sale of the year ends soon - don't miss out!</p>
+						<p class="lead">Don't miss out our biggest sale!</p>
 						<a href="/products?discount=true" class="btn btn-warning mt-3">Shop Deals</a>
 					</div>
 				</div>
@@ -169,11 +286,11 @@
 			<!-- Slide 3 -->
 			<div class="carousel-item">
 				<div class="hero-image-overlay"></div>
-				<img src="img/ecom2.jpg" class="d-block w-100" alt="Slide 3" style="height: 600px; object-fit: cover;">
+				<img src="img/slide11.jpg" class="d-block w-100" alt="Slide 3" style="height: 600px; object-fit: cover;">
 				<div class="carousel-caption">
 					<div class="hero-content animate__animated animate__fadeInDown">
-						<span class="badge bg-success mb-3">Just In</span>
-						<h2 class="display-4 fw-bold">Fresh Arrivals Weekly</h2>
+						<span class="badge bg-success mb-3"></span>
+						<h2 class="display-4 fw-bold">Weekly Fresh Arrivals</h2>
 						<p class="lead">Stay ahead with our latest collection drops and trends</p>
 						<a href="/products?new=true" class="btn btn-primary mt-3">Explore Now</a>
 					</div>
@@ -197,104 +314,27 @@
 			<div class="col-md-2" th:each="c:${category}">
 				<div class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded">
 					<div class="card-body text-center">
-						<img th:src="@{'img/category_img/'+${c.imageName}}" width="65%" height="140px"><br>
+						<img th:src="@{'img/category_img/'+${c.imageName}}" width="80%" height="60px"><br>
 						<a th:href="@{'/products?category='+${c.name}}" class="text-decoration-none">[[${c.name}]]</a>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2">
-    <div
-        class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-        <div class="card-body text-center">
-            <img src="img/category_img/beuty.png" width="65%" height="140px">
-            <p>Beauty</p>
-        </div>
-    </div>
-</div>
-			<div class="col-md-2">
-				<div
-						class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-					<div class="card-body text-center">
-						<img src="img/category_img/pant.png" width="65%" height="140px">
-						<p>Clothes</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div
-						class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-					<div class="card-body text-center">
-						<img src="img/category_img/laptop.jpg" width="65%" height="140px">
-						<p>Laptop</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div
-						class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-					<div class="card-body text-center">
-						<img src="img/category_img/mobile.png" width="65%" height="140px">
-						<p>Mobile</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div
-						class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
-					<div class="card-body text-center">
-						<img src="img/category_img/groccery.jpg" width="65%"
-							 height="140px">
-						<p>Grocery</p>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 
-	<!-- Latest Product Module -->
-	<div class="container-fluid bg-light p-3" id="trending">
+	<!-- About Us Module -->
+	<div class="container-fluid p-3" id="trending">
 		<div class="row">
-			<p class="text-center fs-4">Latest Product</p>
-			<div class="col-md-3" th:each="p:${products}">
-				<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-					<div class="card-body text-center">
-						<img alt="" th:src="@{'img/product_img/'+${p.image}}" class="" width="65%" height="140px">
-						<p class="text-center"><a th:href="@{'/product/'+${p.id}}" class="text-decoration-none">[[${p.title}]]</a></p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-					<div class="card-body text-center">
-						<img alt="" src="img/product_img/laptop.jpg" class="" width="65%"
-							 height="140px">
-						<p class="text-center">HP Laptop</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-					<div class="card-body text-center">
-						<img alt="" src="img/product_img/laptop.jpg" class="" width="65%"
-							 height="140px">
-						<p class="text-center">HP Laptop</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-					<div class="card-body text-center">
-						<img alt="" src="img/product_img/laptop.jpg" class="" width="65%"
-							 height="140px">
-						<p class="text-center">HP Laptop</p>
-					</div>
-				</div>
+			<p class="text-center fs-4"><b>ABOUT US</b></p>
+			<div class="col-md-12">
+				<fieldset class="about-fieldset">
+					<p class="about-paragraph">Welcome to SHOPPEDIn, your ultimate destination for stylish and affordable footwear! Founded with a passion for fashion and a commitment to quality, we strive to bring you the latest trends and timeless classics to elevate your wardrobe. Our curated collection of shoes is designed to cater to every occasion, ensuring you step out with confidence and flair. At SHOPPEDIn, we believe that great style should be accessible to all, which is why we?re dedicated to offering exceptional value without compromising on craftsmanship.</p>
+				</fieldset>
 			</div>
 		</div>
 	</div>
 </section>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 	// Enhanced carousel transitions and smooth scrolling
@@ -328,7 +368,7 @@
 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Offset for fixed header if needed
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
@@ -336,7 +376,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>
