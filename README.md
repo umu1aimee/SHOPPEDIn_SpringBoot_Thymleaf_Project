@@ -1,171 +1,100 @@
-# E-commerce Web Application 
-E-commerce Web Application
-Project Overview
-This project is a simple e-commerce web application developed as a mini-project for the Web Technology & Internet (INSY-413) course at the Adventist University of Central Africa. The application allows customers to browse products, add them to a shopping cart, proceed to checkout, and manage their accounts. Admins can add and manage products and update order statuses. The application uses Spring Boot for the backend and Thymeleaf for the frontend, with a database for persistent storage.
-User Stories
-
-Customer:
-Browse products and view their details.
-Add products to the shopping cart.
-View the shopping cart and proceed to checkout.
-Register/login to manage orders.
-
-
-Admin:
-Add new products and manage existing ones.
-View and update order statuses.
-
-
-
-Technologies Stack
-
-Backend: Spring Boot, Spring Data JPA, Spring Security
-Frontend: Thymeleaf, Spring MVC
-Database: MySQL/PostgreSQL (configurable)
-Build Tool: Maven/Gradle
-Deployment: Cloud platform (e.g., AWS, Azure, or Heroku)
-Version Control: Git (hosted on GitHub)
-
-Setup Instructions
-Prerequisites
-
-Java 17 or higher
-Maven or Gradle
-MySQL/PostgreSQL database
-IDE (e.g., IntelliJ IDEA, Eclipse)
-Git
-Cloud platform account (e.g., AWS, Azure, or Heroku) for deployment
-
-Steps to Set Up and Run Locally
-
-Clone the Repository:
-git clone https://github.com/your-username/ecommerce-webapp.git
-cd ecommerce-webapp
-
-
-Configure the Database:
-
-Install MySQL/PostgreSQL and create a database (e.g., ecommerce_db).
-Update the application.properties file in src/main/resources with your database credentials:spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_db
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-
-
-
-
-Build the Project:
-
-If using Maven:mvn clean install
-
-
-If using Gradle:./gradlew build
-
-
-
-
-Run the Application:
-
-If using Maven:mvn spring-boot:run
-
-
-If using Gradle:./gradlew bootRun
-
-
-The application will be accessible at http://localhost:8080.
-
-
-Access the Application:
-
-Open a browser and navigate to http://localhost:8080.
-Use the default admin credentials (if configured) or register a new user.
-
-
-
-Deployment
-
-Deploy to a Cloud Platform:
-
-Configure the cloud platform (e.g., AWS, Azure, or Heroku).
-For Heroku:
-Install the Heroku CLI.
-Run:heroku create
-git push heroku main
-
-
-Configure the database on the cloud platform and update application.properties accordingly.
-
-
-Ensure environment variables for sensitive data (e.g., database credentials) are set on the cloud platform.
-
-
-Access the Deployed Application:
-
-The cloud platform will provide a URL (e.g., https://your-app-name.herokuapp.com).
-
-
-
-Project Structure
-ecommerce-webapp/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/example/ecommerce/
-│   │   │       ├── controller/    # REST controllers and Thymeleaf controllers
-│   │   │       ├── entity/        # JPA entities (Product, Order, User)
-│   │   │       ├── repository/    # Spring Data JPA repositories
-│   │   │       ├── service/       # Business logic
-│   │   │       └── config/        # Spring Security and other configurations
-│   │   ├── resources/
-│   │   │   ├── templates/         # Thymeleaf templates
-│   │   │   ├── static/            # CSS, JavaScript, and other static resources
-│   │   │   └── application.properties  # Configuration file
-├── pom.xml  # Maven configuration (or build.gradle for Gradle)
-└── README.md
-
-Features
-
-Backend:
-
-RESTful APIs for CRUD operations on products and orders.
-User authentication and role-based authorization (USER, ADMIN) using Spring Security.
-Database interaction using Spring Data JPA.
-Server-side validation for user inputs.
-Error handling with meaningful responses.
-
-
-Frontend:
-
-Product browsing and detailed views using Thymeleaf.
-Shopping cart management (add/remove products).
-User authentication forms (login/signup).
-Checkout process with total calculation.
-Admin dashboard for managing products and orders.
-Responsive design with CSS and JavaScript.
-
-
-
-Error Handling
-
-Backend: Custom exceptions and global exception handling for meaningful error responses.
-Frontend: Displays user-friendly error messages for invalid inputs or failed operations.
-
-How to Contribute
-
-Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Make changes and commit (git commit -m "Add feature").
-Push to the branch (git push origin feature-branch).
-Create a pull request.
-
-GitHub Repository
-
-The source code is hosted at: https://github.com/your-username/ecommerce-webapp
-The repository is public, and the link has been shared on Google Classroom.
-
-Notes
-
-Ensure all dependencies are correctly configured in pom.xml or build.gradle.
-Test the application thoroughly before deployment.
-For any issues, refer to the logs in the console or check the cloud platform's logs.
-
+# E-commerce Web Application
+
+## Project Description
+This project is a Mini Project for the Web Technology & Internet (INSY-413) course at the Faculty of Information Technology, Adventist University of Central Africa, Kigali, Rwanda. It is a simple e-commerce web application developed using Spring Boot for the backend and Thymeleaf for the frontend, adhering to the course requirements. The application supports two primary user roles—customers and admins—enabling distinct functionalities for each.
+
+The backend leverages Spring Boot, Spring Data JPA, and Spring Security to handle business logic, database interactions, and role-based access control. The frontend, built with Thymeleaf and Spring MVC, provides a responsive user interface styled with Bootstrap. The application uses MySQL or PostgreSQL as the database and Maven as the build tool.
+
+## Functionalities
+### Customer Features
+- **Product Browsing**: Displays a list of products with details retrieved via RESTful APIs
+- **Shopping Cart Management**: Allows adding/removing products to/from a cart, viewing the cart, and calculating totals
+- **Checkout and Payment**: Supports a checkout process with a payment interface (simulated or integrated via a payment gateway API)
+- **Order Tracking**: Enables viewing order history and tracking order status (e.g., "Pending," "Shipped," "Delivered")
+- **User Authentication**: Provides registration and login functionality to manage orders and user data
+
+### Admin Features
+- **Product Management**: Facilitates adding, updating, and deleting products through a dedicated admin panel
+- **User Management**: Allows viewing a list of all registered users
+- **Order Management**: Supports viewing all orders and updating their statuses
+
+## Technical Implementation
+### Backend (Spring Boot) 
+- Implements role-based access control (USER, ADMIN) using Spring Security
+- Provides CRUD APIs for product management with a `Product` entity and corresponding repository
+- Manages orders through APIs for placing orders, viewing history, and updating statuses, using an `Order` entity with relationships to users and products
+- Integrates payment processing (simulated or via API)
+- Designs RESTful APIs with appropriate HTTP methods (GET, POST, PUT, DELETE) and JSON responses
+- Applies server-side validation using Spring validations
+
+### Frontend (Thymeleaf) 
+- Features UI components for product browsing, cart management, order tracking, payment processing, and authentication
+- Uses Bootstrap for responsive styling
+- Integrates with backend APIs to fetch data, authenticate users, manage orders, process payments, and display order progress
+- Includes login/signup forms linked with Spring Security
+- Manages static resources (CSS, JavaScript) for enhanced interactivity
+
+### Additional Requirements
+- Incorporates error handling mechanisms for backend and frontend
+- Displays user-friendly error messages
+- Deploys the application on a cloud platform (e.g., AWS, Azure, or Heroku)
+- Hosts source code and documentation publicly on GitHub
+- Submits the GitHub repository link via Google Classroom
+
+## Submission Details
+- **Due Date**: 18 May 2025
+- **Course**: Web Technology & Internet (INSY-413)
+- **Faculty**: Faculty of Information Technology, Adventist University of Central Africa
+- **GitHub Repository**: To be shared publicly and submitted via Google Classroom at: https://classroom.google.com/c/Nze3NTAxMTguNhMw?zic=oso5ymdx
+
+## Technologies Stack
+- **Backend**: Spring Boot, Spring Data JPA, Spring Security
+- **Frontend**: Thymeleaf, Spring MVC
+- **Styling**: Bootstrap
+- **Database**: MySQL or PostgreSQL
+- **Build Tool**: Maven
+
+## Prerequisites
+- Java 17 or later
+- Maven
+- MySQL or PostgreSQL
+- Git
+- An IDE (e.g., IntelliJ IDEA, Eclipse) (optional)
+
+## Setup Instructions
+1. **Create a Spring Boot Project**:
+   - Use Spring Initializr with Maven
+   - Add dependencies: Spring Web, Spring Data JPA, Spring Security, Thymeleaf, and a database driver (e.g., MySQL)
+2. **Configure Database**:
+   - Set up a MySQL/PostgreSQL database named `ecommerce_db`
+   - Update `src/main/resources/application.properties`:
+   spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_db
+
+   3. **Use Spring Data JPA**:
+- Define entities: `Product`, `Order`, `User`
+- Create repositories extending `JpaRepository`
+4. **Implement Spring Security**:
+- Define USER and ADMIN roles
+- Configure access restrictions and authentication endpoints
+
+## Steps to Run Locally
+1. **Clone the Repository**:
+git clone https://github.com/<your-username>/e-commerce-web-app.git</your-username>
+3. **Configure Database**:
+- Ensure MySQL/PostgreSQL is running
+- Update `application.properties` with credentials
+4. **Build the Project**:
+mvn clean install
+5. **Run the Application**:
+mvn spring-boot:run
+Alternatively, run via an IDE by executing the main class (e.g., `EcommerceApplication.java`)
+6. **Access the Application**:
+- Navigate to `http://localhost:8080`
+- Register/login as a customer or admin to explore features
+
+## Project Structure
+- `src/main/java/`: Contains Java code (controllers, services, entities, repositories)
+- `src/main/resources/`: Includes configuration files (`application.properties`) and Thymeleaf templates (`templates/`)
+- `src/main/resources/static/`: Stores static resources (CSS, JavaScript)
+- `pom.xml`: Maven configuration for dependencies and build settings
+- `target/`: Generated after building (compiled classes and JAR file)
