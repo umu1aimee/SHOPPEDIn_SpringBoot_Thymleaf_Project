@@ -33,6 +33,12 @@ The backend leverages Spring Boot, Spring Data JPA, and Spring Security to handl
 - Integrates with backend APIs to fetch data, authenticate users, manage orders, process payments, and display order progress
 - Includes login/signup forms linked with Spring Security
 - Manages static resources (CSS, JavaScript) for enhanced interactivity
+  ###Access the Application:
+
+Open a browser and navigate to http://localhost:8080.
+Use the default admin credentials (if configured) or register a new user.
+
+
 
 ### Additional Requirements
 - Incorporates error handling mechanisms for backend and frontend
